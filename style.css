@@ -1,0 +1,218 @@
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    margin: 0;
+    padding: 10px;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.5;
+    font-size: 16px;
+}
+
+.container {
+    max-width: 100%;
+    padding: 0 10px;
+}
+
+.accordion {
+    width: 100%;
+    margin: 15px 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.accordion-item {
+    border-bottom: 1px solid #e0e0e0;
+    background: white;
+}
+
+.accordion-item:last-child {
+    border-bottom: none;
+}
+
+.accordion-header {
+    padding: 18px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+    user-select: none;
+    min-height: 60px;
+}
+
+.accordion-header:hover {
+    background-color: #f5f5f5;
+}
+
+.accordion-header .icon {
+    transition: transform 0.3s;
+}
+
+.accordion-item.active .accordion-header .icon {
+    transform: rotate(180deg);
+}
+
+.accordion-content {
+    padding: 0 15px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background-color: white;
+    font-size: 15px;
+}
+
+.accordion-item.active .accordion-content {
+    padding: 15px;
+    max-height: 500px;
+}
+
+.content-footer {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+    font-size: 14px;
+    color: #666;
+}
+
+/* Кнопка для мобильных */
+.btn {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 18px;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background-color 0.3s;
+    touch-action: manipulation;
+}
+
+.btn:hover, .btn:active {
+    background-color: #45a049;
+}
+
+/* Адаптивный popup */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    animation: fadeIn 0.3s;
+}
+
+.popup-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+    max-height: 80vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    cursor: pointer;
+    color: #666;
+    padding: 5px;
+}
+
+/* Вкладки для мобильных */
+.tabs {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.tab-header {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    justify-content: space-around;
+}
+
+.tab-link {
+    padding: 15px 0;
+    cursor: pointer;
+    text-align: center;
+    flex: 1;
+    font-size: 20px;
+    color: #666;
+    transition: all 0.3s;
+    min-width: 50px;
+}
+
+.tab-link.active {
+    color: #4CAF50;
+    border-bottom: 3px solid #4CAF50;
+}
+
+.tab-content {
+    display: none;
+    padding: 20px 10px;
+    background-color: white;
+    animation: fadeIn 0.5s;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.tab-content h3 {
+    margin-top: 0;
+    color: #4CAF50;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Медиа-запросы для очень маленьких экранов */
+@media (max-width: 400px) {
+    .accordion-header {
+        padding: 15px 10px;
+        font-size: 15px;
+    }
+    
+    .btn {
+        padding: 14px;
+        font-size: 16px;
+    }
+    
+    .popup-content {
+        padding: 15px;
+    }
+    
+    .tab-link {
+        font-size: 18px;
+        padding: 12px 0;
+    }
+}
